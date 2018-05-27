@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/fruitshop'
+
+cash_register = Fruitshop::CashRegister.new
+
+ARGF.each do |argument|
+  product = Fruitshop::Product.new(argument.chomp)
+  cash_register.add(product)
+
+  puts cash_register.total
+end
