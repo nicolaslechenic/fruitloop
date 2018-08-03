@@ -5,7 +5,7 @@ RSpec.describe Fruitshop::CashRegister do
     def cerise
       Fruitshop::Product.new('Cerises')
     end
-    
+
     let(:product_discount) { -20 }
 
     it 'apply discount on total price' do

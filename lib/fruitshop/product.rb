@@ -3,16 +3,7 @@ module Fruitshop
     remove_method :unique_name=
 
     def price
-      case unique_name
-      when 'Pommes'
-        100
-      when 'Cerises'
-        75
-      when 'Bananes'
-        150
-      else
-        raise ArgumentError
-      end
+      Price.product_name(unique_name)
     end
 
     def discount(per_product_counter)

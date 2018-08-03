@@ -1,0 +1,9 @@
+prices:
+  - { unique_name: Pommes, value: 100 }
+  - { unique_name: Cerises, value: 75 }
+  - { unique_name: Bananes, value: 150 }
+  - { unique_name: Kiwis, value: 130 }
+
+discounts:
+  - { unique_name: Cerises, value: 20 }
+  - { unique_name: Kiwis, value: 35 }

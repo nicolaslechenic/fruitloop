@@ -1,15 +1,13 @@
 RSpec.describe Fruitshop::Product do
   describe '#price' do
-    {
-      'Pommes'  => 100,
-      'Cerises' => 75,
-      'Bananes' => 150
-    }.each do |uniq_name, unit_price|
-      context "for an #{uniq_name}" do
-        let(:product) { described_class.new(uniq_name) }
+    fixture(:products)['prices'].each do |price|
+      context "for an #{price['unique_name']}" do
+        let(:product) { described_class.new(price['unique_name']) }
+        
+        it "return #{price['value']} cents" do
+          allow(Fruitshop::Price).to receive(:all_products).and_return(StubPrice.all_products)
 
-        it "return #{unit_price} cents" do
-          expect(product.price).to eq(unit_price)
+          expect(product.price).to eq(price['value'])
         end
       end
     end
