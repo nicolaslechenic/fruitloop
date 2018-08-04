@@ -13,16 +13,16 @@ RSpec.describe Fruitshop::Product do
     end
   end
 
-  describe '#even_discount' do
+  describe '#discount' do
     fixture(:products)['discounts'].each do |discount|
       context "for an #{discount['product_unique_name']}" do
         let(:product) { described_class.new(discount['product_unique_name']) }
-        let(:per_product_counter) { { product => 2 } }
+        let(:product_count) { 2 }
 
         it "return #{discount['value']} cents" do
           allow(Fruitshop::Discounter).to receive(:all).and_return(StubProduct.discounts)
 
-          expect(product.even_discount(per_product_counter)).to eq(discount['value'])
+          expect(product.discount(product_count)).to eq(discount['value'])
         end
       end
     end

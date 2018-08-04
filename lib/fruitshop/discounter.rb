@@ -5,7 +5,9 @@ module Fruitshop
         @all ||= YAML.load_file('./data/discounts.yml')['discounts']
       end
 
-      def call(product:)
+      def call(product:, count:)
+        return 0 unless count.even?
+
         selected_products = all.select do |discount|
           discount['product_unique_name'] == product.unique_name
         end

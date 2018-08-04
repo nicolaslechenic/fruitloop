@@ -6,10 +6,8 @@ module Fruitshop
       @price ||= Pricer.(product: self)
     end
 
-    def even_discount(per_product_counter)
-      return 0 unless per_product_counter[self].even?
-
-      @even_discount ||= Discounter.(product: self)
+    def discount(product_count)
+      Discounter.(product: self, count: product_count)
     end
   end
 end
