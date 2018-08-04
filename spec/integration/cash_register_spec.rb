@@ -9,8 +9,8 @@ RSpec.describe Fruitshop::CashRegister do
       it 'apply discount on total price' do
         2.times { instance.add(product) }
 
-        allow(Fruitshop::Price).to receive(:all).and_return(StubProduct.prices)
-        allow(Fruitshop::Discount).to receive(:all).and_return(StubProduct.discounts)
+        allow(Fruitshop::Pricer).to receive(:all).and_return(StubProduct.prices)
+        allow(Fruitshop::Discounter).to receive(:all).and_return(StubProduct.discounts)
 
         expect(instance.total).to eq(product.price * 2 - product_discount)
       end

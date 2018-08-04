@@ -1,5 +1,5 @@
 module Fruitshop
-  class Price
+  class Pricer
     class << self
       def all
         @all ||= YAML.load_file('./data/prices.yml')['prices']

@@ -5,7 +5,7 @@ RSpec.describe Fruitshop::Product do
         let(:product) { described_class.new(price['product_unique_name']) }
 
         it "return #{price['value']} cents" do
-          allow(Fruitshop::Price).to receive(:all).and_return(StubProduct.prices)
+          allow(Fruitshop::Pricer).to receive(:all).and_return(StubProduct.prices)
 
           expect(product.price).to eq(price['value'])
         end
@@ -20,7 +20,7 @@ RSpec.describe Fruitshop::Product do
         let(:per_product_counter) { { product => 2 } }
 
         it "return #{discount['value']} cents" do
-          allow(Fruitshop::Discount).to receive(:all).and_return(StubProduct.discounts)
+          allow(Fruitshop::Discounter).to receive(:all).and_return(StubProduct.discounts)
 
           expect(product.even_discount(per_product_counter)).to eq(discount['value'])
         end
