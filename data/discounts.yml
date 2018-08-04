@@ -1,0 +1,2 @@
+discounts:
+  - { product_unique_name: Cerises, value: 20 }

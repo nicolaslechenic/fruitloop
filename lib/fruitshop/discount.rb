@@ -1,13 +1,13 @@
 module Fruitshop
   class Discount
     class << self
-      def all_products
-        Product.all['discounts']
+      def all
+        @all ||= YAML.load_file('./data/discounts.yml')['discounts']
       end
 
-      def product_name(unique_name)
+      def product_name(product_unique_name)
         selected_products =
-          all_products.select { |product| product['unique_name'] == unique_name }
+          all.select { |discount| discount['product_unique_name'] == product_unique_name }
 
         return 0 unless selected_products.count.positive?
 
