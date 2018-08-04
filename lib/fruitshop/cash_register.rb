@@ -2,7 +2,7 @@ module Fruitshop
   class CashRegister
     attr_reader :products
 
-    def initialize(pricer: Pricer, discounter: Discounter)
+    def initialize(pricer: Pricer.new, discounter: Discounter.new)
       @pricer = pricer
       @discounter = discounter
       @products = []

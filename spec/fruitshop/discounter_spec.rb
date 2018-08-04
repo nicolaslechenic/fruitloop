@@ -1,9 +1,5 @@
 RSpec.describe Fruitshop::Discounter do
-  subject { described_class.call(product: product, count: product_count) }
-
-  before do
-    allow(Fruitshop::Discounter).to receive(:all).and_return(Fixtures.discounts)
-  end
+  subject { Fixtures.discounter.call(product: product, count: product_count) }
 
   Fixtures.discounts.each do |discount|
     context "for a product named '#{discount['product_unique_name']}'" do
