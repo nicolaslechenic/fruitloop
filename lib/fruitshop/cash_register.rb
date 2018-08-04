@@ -2,7 +2,9 @@ module Fruitshop
   class CashRegister
     attr_reader :products
 
-    def initialize
+    def initialize(pricer: Pricer, discounter: Discounter)
+      @pricer = pricer
+      @discounter = discounter
       @products = []
     end
 
@@ -15,8 +17,10 @@ module Fruitshop
 
       @products.reduce(0) do |total, product|
         product_count = (per_product_counter[product] += 1)
+        product_price = @pricer.(product: product)
+        discount = @discounter.(product: product, count: product_count)
 
-        total + product.price - product.discount(product_count)
+        total + product_price - discount
       end
     end
   end
