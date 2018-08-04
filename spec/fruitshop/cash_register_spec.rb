@@ -3,7 +3,7 @@ RSpec.describe Fruitshop::CashRegister do
 
   describe '#add' do
     let(:product_price) { 100 }
-    let(:product) { instance_double(Fruitshop::Product, price: product_price, discount: product_discount) }
+    let(:product) { instance_double(Fruitshop::Product, price: product_price, even_discount: product_discount) }
 
     context 'without discount' do
       let(:product_discount) { 0 }
@@ -21,7 +21,7 @@ RSpec.describe Fruitshop::CashRegister do
       it 'apply discount on total price' do
         expect { instance.add(product) }
           .to change { instance.total }
-          .by(product_price + product_discount)
+          .by(product_price - product_discount)
       end
     end
   end

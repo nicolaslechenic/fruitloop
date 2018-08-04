@@ -16,7 +16,7 @@ module Fruitshop
       @products.reduce(0) do |total, product|
         per_product_counter[product] += 1
 
-        total + product.price + product.discount(per_product_counter)
+        total + product.price - product.even_discount(per_product_counter)
       end
     end
   end

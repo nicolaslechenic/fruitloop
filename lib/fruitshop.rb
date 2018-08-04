@@ -1,5 +1,6 @@
 require 'yaml'
 require_relative './fruitshop/cash_register'
 require_relative './fruitshop/price'
+require_relative './fruitshop/discount'
 require_relative './fruitshop/product'
 require_relative './fruitshop/session'
