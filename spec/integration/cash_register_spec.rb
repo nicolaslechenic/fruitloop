@@ -1,17 +1,19 @@
 RSpec.describe Fruitshop::CashRegister do
   let(:instance) { described_class.new }
 
-  describe 'the total when buying two cerises' do
-    def cerise
-      Fruitshop::Product.new('Cerises')
-    end
+  fixture(:products)['discounts'].each do |discount|
+    describe "the total when buying two #{discount['product_unique_name']}" do
+      let(:product) { Fruitshop::Product.new(discount['product_unique_name']) }
+      let(:product_discount) { discount['value'] }
 
-    let(:product_discount) { -20 }
+      it 'apply discount on total price' do
+        2.times { instance.add(product) }
 
-    it 'apply discount on total price' do
-      2.times { instance.add(cerise) }
+        allow(Fruitshop::Price).to receive(:all).and_return(StubProduct.prices)
+        allow(Fruitshop::Discount).to receive(:all).and_return(StubProduct.discounts)
 
-      expect(instance.total).to eq(cerise.price * 2 + product_discount)
+        expect(instance.total).to eq(product.price * 2 - product_discount)
+      end
     end
   end
 end
