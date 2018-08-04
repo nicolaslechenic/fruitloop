@@ -1,2 +1,2 @@
-- { product_unique_name: Cerises, value: 20 }
-- { product_unique_name: Kiwis, value: 35 }
+Cerises: 20
+Kiwis: 35

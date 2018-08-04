@@ -1,9 +1,9 @@
 RSpec.describe Fruitshop::Discounter do
   subject { Fixtures.discounter.call(product: product, count: product_count) }
 
-  Fixtures.discounts.each do |discount|
-    context "for a product named '#{discount['product_unique_name']}'" do
-      let(:product) { Fruitshop::Product.new(discount['product_unique_name']) }
+  Fixtures.discounts.each do |product_name, expected_discount|
+    context "for a product named '#{product_name}'" do
+      let(:product) { Fruitshop::Product.new(product_name) }
 
       context "when product_count is odd" do
         let(:product_count) { rand(100) * 2 + 1 }
@@ -12,7 +12,7 @@ RSpec.describe Fruitshop::Discounter do
 
       context "when product_count is even" do
         let(:product_count) { rand(100) * 2 }
-        it { is_expected.to eq discount['value'] }
+        it { is_expected.to eq expected_discount }
       end
     end
   end
