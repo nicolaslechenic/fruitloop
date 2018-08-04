@@ -9,7 +9,9 @@ module Fruitshop
         price['product_unique_name'] == product.unique_name
       end
 
-      raise ArgumentError unless selected_products.count.positive?
+      if selected_products.empty?
+        raise ArgumentError
+      end
 
       selected_products.first['value']
     end

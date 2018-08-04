@@ -11,7 +11,9 @@ module Fruitshop
         discount['product_unique_name'] == product.unique_name
       end
 
-      return 0 unless selected_products.count.positive?
+      if selected_products.empty?
+        return 0
+      end
 
       selected_products.first['value']
     end
