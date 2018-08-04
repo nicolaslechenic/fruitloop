@@ -2,7 +2,7 @@ module Fruitshop
   class Discounter
     class << self
       def all
-        @all ||= YAML.load_file('./data/discounts.yml')['discounts']
+        @all ||= YAML.load_file('./data/discounts.yml')
       end
 
       def call(product:, count:)

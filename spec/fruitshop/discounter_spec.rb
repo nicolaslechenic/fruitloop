@@ -2,10 +2,10 @@ RSpec.describe Fruitshop::Discounter do
   subject { described_class.call(product: product, count: product_count) }
 
   before do
-    allow(Fruitshop::Discounter).to receive(:all).and_return(StubProduct.discounts)
+    allow(Fruitshop::Discounter).to receive(:all).and_return(Fixtures.discounts)
   end
 
-  fixture(:products)['discounts'].each do |discount|
+  Fixtures.discounts.each do |discount|
     context "for a product named '#{discount['product_unique_name']}'" do
       let(:product) { Fruitshop::Product.new(discount['product_unique_name']) }
 

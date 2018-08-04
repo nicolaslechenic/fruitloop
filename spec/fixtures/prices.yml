@@ -1,3 +1,4 @@
 - { product_unique_name: Pommes, value: 100 }
 - { product_unique_name: Cerises, value: 75 }
 - { product_unique_name: Bananes, value: 150 }
+- { product_unique_name: Kiwis, value: 130 }
