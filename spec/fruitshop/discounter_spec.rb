@@ -16,4 +16,10 @@ RSpec.describe Fruitshop::Discounter do
       end
     end
   end
+
+  context "for a product that have no entry in the discounts" do
+    let(:product) { Fruitshop::Product.new("NoRealProduct") }
+    let(:product_count) { rand(100) }
+    it { is_expected.to eq 0 }
+  end
 end

@@ -7,4 +7,13 @@ RSpec.describe Fruitshop::Pricer do
       it { is_expected.to eq expected_price }
     end
   end
+
+  context "for a product that have no entry in the prices" do
+    let(:product) { Fruitshop::Product.new("NoRealProduct") }
+
+    it "raises a KeyError" do
+      expect { subject }.to raise_error(KeyError)
+    end
+  end
+
 end
