@@ -5,9 +5,10 @@ module Fruitshop
         @all ||= YAML.load_file('./data/prices.yml')['prices']
       end
 
-      def product_name(product_unique_name)
-        selected_products =
-          all.select { |price| price['product_unique_name'] == product_unique_name }
+      def call(product:)
+        selected_products = all.select do |price|
+          price['product_unique_name'] == product.unique_name
+        end
 
         raise ArgumentError unless selected_products.count.positive?
 
